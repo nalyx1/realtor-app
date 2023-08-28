@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Home {
+  id            String       @id @default(uuid()) @db.Uuid
+  address       String       @db.VarChar(255)
+  city          String       @db.VarChar(255)
+  listed_date   DateTime     @default(now()) @db.Timestamp()
+  property_type PropertyType
+  role          Role
+  created_at    DateTime     @default(now()) @db.Timestamp()
+  updated_at    DateTime     @updatedAt
+
+  @@map("homes")
+}
+
+model Image {
+  id         String   @id @default(uuid()) @db.Uuid
+  url        String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt
+
+  @@map("images")
+}
+
+model User {
+  id         String   @id @default(uuid()) @db.Uuid
+  name       String   @db.VarChar(255)
+  phone      String   @db.VarChar(30)
+  email      String   @db.VarChar(255)
+  password   String   @db.VarChar(30)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Message {
+  id         String   @id @default(uuid()) @db.Uuid
+  message    String   @db.VarChar(255)
+  created_at DateTime @default(now()) @db.Timestamp()
+  updated_at DateTime @updatedAt
+
+  @@map("messages")
+}
+
+enum PropertyType {
+  RESIDENTIAL
+  CONDO
+}
+
+enum Role {
+  BUYER
+  REALTOR
+  ADMIN
+}
