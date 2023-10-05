@@ -13,7 +13,7 @@ CREATE TABLE "homes" (
     "property_type" "PropertyType" NOT NULL,
     "role" "Role" NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "updated_at" TIMESTAMP NOT NULL,
     "realtor_id" UUID NOT NULL,
 
     CONSTRAINT "homes_pkey" PRIMARY KEY ("id")
@@ -24,7 +24,7 @@ CREATE TABLE "images" (
     "id" UUID NOT NULL,
     "url" VARCHAR(255) NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "updated_at" TIMESTAMP NOT NULL,
     "home_id" UUID NOT NULL,
 
     CONSTRAINT "images_pkey" PRIMARY KEY ("id")
@@ -38,7 +38,7 @@ CREATE TABLE "users" (
     "email" VARCHAR(255) NOT NULL,
     "password" VARCHAR(30) NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "updated_at" TIMESTAMP NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -48,13 +48,16 @@ CREATE TABLE "messages" (
     "id" UUID NOT NULL,
     "message" VARCHAR(255) NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
+    "updated_at" TIMESTAMP NOT NULL,
     "home_id" UUID NOT NULL,
     "realtor_id" UUID NOT NULL,
     "buyer_id" UUID NOT NULL,
 
     CONSTRAINT "messages_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
 -- AddForeignKey
 ALTER TABLE "homes" ADD CONSTRAINT "homes_realtor_id_fkey" FOREIGN KEY ("realtor_id") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
