@@ -1,0 +1,29 @@
+POST http://localhost:3000/homes
+Content-Type: application/json
+
+{
+    "name": "nalyx",
+    "phone": "(12) 9 8148-0341",
+    "email": "joojrodrigues.dev@outlook.com",
+    "password": "Biscoito24!"
+}
+
+###
+GET http://localhost:3000/homes
+
+###
+GET http://localhost:3000/homes/1
+
+###
+PATCH http://localhost:3000/homes/1
+Content-Type: application/json
+
+{
+    "name": "user",
+    "phone": "321321480341",
+    "email": "user@user.com",
+    "password": "123456"
+}
+
+###
+DELETE http://localhost:3000/homes/7a52a21d-9949-4926-9406-c53517fa204a
