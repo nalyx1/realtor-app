@@ -1,0 +1,11 @@
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@email.com",
+    "password": "senha123"
+}
+ 
+###
+GET http://localhost:3000/auth/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYTcxZGFhZi1iZjIzLTRjMGItOTU0OS01NzNiMmY4YTU4NzEiLCJlbWFpbCI6InRlc3RlQHRlc3RlLmNvbSIsInJvbGUiOiJCVVlFUiIsImlhdCI6MTY5NTMzMjE4OSwiZXhwIjoxNjk1MzM1Nzg5fQ.LJT0K5lHjGJrGM_mzSPubPz_xe_lsCFvRRqSO-5Lpp0
