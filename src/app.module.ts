@@ -6,9 +6,17 @@ import { UsersModule } from './users/users.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { HashModule } from './hash/hash.module';
 import { RolesModule } from './roles/roles.module';
+import { HomesModule } from './homes/homes.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, PrismaModule, HashModule, RolesModule],
+  imports: [
+    AuthModule,
+    UsersModule,
+    PrismaModule,
+    HashModule,
+    RolesModule,
+    HomesModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
