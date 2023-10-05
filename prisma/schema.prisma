@@ -8,17 +8,21 @@ datasource db {
 }
 
 model Home {
-  id            String       @id @default(uuid()) @db.Uuid
-  address       String       @db.VarChar(255)
-  city          String       @db.VarChar(255)
-  listed_date   DateTime     @default(now()) @db.Timestamp
-  property_type PropertyType
-  created_at    DateTime     @default(now()) @db.Timestamp
-  updated_at    DateTime     @updatedAt @db.Timestamp
-  realtor_id    String       @db.Uuid
-  realtor       User         @relation(fields: [realtor_id], references: [id])
-  images        Image[]
-  messages      Message[]
+  id                  String       @id @default(uuid()) @db.Uuid
+  address             String       @db.VarChar(255)
+  city                String       @db.VarChar(255)
+  number_of_bedrooms  Int          @db.SmallInt
+  number_of_bathrooms Int          @db.SmallInt
+  listed_date         DateTime     @default(now()) @db.Timestamp
+  property_type       PropertyType
+  price               Float        @db.Real
+  land_size           Int          @db.SmallInt
+  created_at          DateTime     @default(now()) @db.Timestamp
+  updated_at          DateTime     @updatedAt @db.Timestamp
+  realtor_id          String       @db.Uuid
+  realtor             User         @relation(fields: [realtor_id], references: [id])
+  images              Image[]
+  messages            Message[]
 
   @@map("homes")
 }
